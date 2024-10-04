@@ -1,8 +1,18 @@
+import {
+  Button,
+  ButtonGroup
+} from '@chakra-ui/react'
+
+
+
 function App() {
   
 
   return (
-    <h1>Hello World!</h1>
+    <div className='container'>
+      <Button onClick={()=>alert('Button Clicked')}>Button</Button>
+    </div>
+
   )
 }
 
