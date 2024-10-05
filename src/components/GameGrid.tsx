@@ -13,12 +13,9 @@ const GameGrid = () => {
     const skeletons = [1,2,3,4,5,6,7,8];
 
 
-
     return (
 
         <>
-
-
 
             {error && <Text>{error}</Text>}
 
@@ -30,7 +27,7 @@ const GameGrid = () => {
                     xl: 3 
                 }} 
                 padding={'10px'} 
-                spacing={10}
+                spacing={3}
             >
                 {/* GameCard Skeletons  */}
                 {isLoading && skeletons.map((_, index) => 
