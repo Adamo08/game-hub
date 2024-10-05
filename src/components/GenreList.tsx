@@ -1,15 +1,20 @@
-import { HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react';
+import { Button, HStack, Image, List, ListItem, Spinner, Text } from '@chakra-ui/react';
 import useGenres, { Genre } from '../hooks/useGenres';
 import getCroppedImageUrl from '../services/image-url';
 import GenreSkeleton from './GenreSkeleton';
 
+interface Props{
+    onSelectGenre: (genre: Genre) => void; // To notify the parent or the consumer of this component that a genre has been delected
+}
 
-const GenreList = () => {
+const GenreList = ({onSelectGenre}: Props) => {
 
     const { data, error, isLoading } = useGenres();
     const skeletons = Array.from({ length: 19 }, (v, i) => i + 1);
 
     if (error) return null;
+
+
     return (
         <>
             <List>
@@ -29,7 +34,11 @@ const GenreList = () => {
                                     borderRadius={8}
                                     src={getCroppedImageUrl(genre.image_background)}
                                 />
-                                <Text fontSize='large'>{genre.name}</Text>
+                                <Button 
+                                    fontSize='large' 
+                                    variant='link'
+                                    onClick={() => onSelectGenre(genre)}
+                                >{genre.name}</Button>
                             </HStack>
                         </ListItem>
                     )
