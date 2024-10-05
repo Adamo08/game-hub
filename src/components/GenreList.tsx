@@ -5,9 +5,10 @@ import GenreSkeleton from './GenreSkeleton';
 
 interface Props{
     onSelectGenre: (genre: Genre) => void; // To notify the parent or the consumer of this component that a genre has been delected
+    selectedGenre: Genre | null
 }
 
-const GenreList = ({onSelectGenre}: Props) => {
+const GenreList = ({onSelectGenre, selectedGenre}: Props) => {
 
     const { data, error, isLoading } = useGenres();
     const skeletons = Array.from({ length: 19 }, (v, i) => i + 1);
@@ -34,10 +35,15 @@ const GenreList = ({onSelectGenre}: Props) => {
                                     borderRadius={8}
                                     src={getCroppedImageUrl(genre.image_background)}
                                 />
-                                <Button 
+                                <Button
+                                    fontWeight={genre.id === selectedGenre?.id ? 'bold' : 'normal'}
                                     fontSize='large' 
                                     variant='link'
-                                    onClick={() => onSelectGenre(genre)}
+                                    onClick={
+                                        () => {
+                                            onSelectGenre(genre);
+                                    }
+                                    }
                                 >{genre.name}</Button>
                             </HStack>
                         </ListItem>
