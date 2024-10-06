@@ -1,4 +1,4 @@
-import { Box, Flex, Grid, GridItem, Show } from '@chakra-ui/react'
+import { Box, Flex, Grid, GridItem, Show, useColorModeValue  } from '@chakra-ui/react'
 import Navbar from './components/NavBar'
 import GameGrid from './components/GameGrid'
 import GenreList from './components/GenreList'
@@ -33,13 +33,22 @@ function App() {
         lg: '200px 1fr'
       }}
     >
-      <GridItem area='nav'>
+      <GridItem 
+        area='nav'
+        position='sticky'
+        top={0}
+        zIndex={1}
+        backgroundColor={useColorModeValue('white', 'gray.800')} 
+        boxShadow='md'
+      >
         <Navbar />
       </GridItem>
+
       <Show above='lg'>
         <GridItem  
           area='aside'
           paddingX={5}
+          paddingTop={5}
         >
           <GenreList 
             selectedGenre={gameQuery.genre} 
@@ -47,7 +56,7 @@ function App() {
           />
         </GridItem>
       </Show>
-      <GridItem area='main'>
+      <GridItem area='main' paddingTop={5}>
         <Flex paddingLeft={2} marginBottom={5}>
           <PlatformSelector
               selectedPlatform={gameQuery.platform}
