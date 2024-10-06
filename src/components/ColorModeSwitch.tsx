@@ -6,7 +6,6 @@ const ColorModeSwitch = () => {
     const { toggleColorMode, colorMode } = useColorMode();
 
     return (
-        <HStack>
             <IconButton
                 aria-label="Toggle color mode"
                 icon={colorMode === 'dark' ? <MoonIcon /> : <SunIcon />}
@@ -15,10 +14,6 @@ const ColorModeSwitch = () => {
                 colorScheme={colorMode === 'dark' ? 'gray' : 'yellow'}
                 borderRadius="50%"
             />
-            <Text>
-                {colorMode === 'dark' ? 'Dark Mode' : 'Light Mode'}
-            </Text>
-        </HStack>
     );
 };
 
