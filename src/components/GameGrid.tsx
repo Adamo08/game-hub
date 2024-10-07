@@ -17,12 +17,10 @@ const GameGrid = ({ gameQuery } : Props) => {
     const skeletons = [1,2,3,4,5,6,7,8];
 
 
+    if (error) return <Text>{error}</Text>
+
     return (
-
         <>
-
-            {error && <Text>{error}</Text>}
-
             {/* Game Cards  */}
             <SimpleGrid 
                 columns={{ 
@@ -52,7 +50,6 @@ const GameGrid = ({ gameQuery } : Props) => {
                     )
                 )}
             </SimpleGrid>
-
         </>
 
     )
