@@ -10,9 +10,10 @@ const ColorModeSwitch = () => {
                 aria-label="Toggle color mode"
                 icon={colorMode === 'dark' ? <MoonIcon /> : <SunIcon />}
                 onClick={toggleColorMode}
-                // variant="outline"
+                variant="outline"
                 colorScheme={colorMode === 'dark' ? 'gray' : 'yellow'}
                 borderRadius="50%"
+                marginLeft={10}
             />
     );
 };

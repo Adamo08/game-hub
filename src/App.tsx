@@ -14,6 +14,7 @@ export interface GameQuery {
   genre: Genre | null;
   platform: Platform | null;
   sortOrder: string;
+  searchText: string;
 }
 
 
@@ -41,7 +42,7 @@ function App() {
         backgroundColor={useColorModeValue('white', 'gray.800')} 
         boxShadow='md'
       >
-        <Navbar />
+        <Navbar onSearch={(searchText) => setGameQuery({...gameQuery,searchText })}/>
       </GridItem>
 
       <Show above='lg'>
